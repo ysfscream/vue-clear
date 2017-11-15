@@ -1,6 +1,6 @@
 # vue-clear
 
-> A Vue.js project
+> 📋 vue-demo and the to do list app
 
 ## Build Setup
 
