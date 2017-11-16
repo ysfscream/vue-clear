@@ -5,7 +5,7 @@
       <nav class="page-title">
         <div class="page-title-left">
           <span>{{ todo.title }}</span>
-          <span>{{ todo.count }}</span>
+          <span>{{ checkCount.length }}</span>
         </div>
         <div class="page-title-right">
           <a @click="isLocked">
@@ -132,7 +132,6 @@ export default {
       }).then((res) => {
         if (res.status === 200) {
           bus.$emit('reLoad');
-          this.loadData();
         }
       });
     },
