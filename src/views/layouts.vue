@@ -23,19 +23,24 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/style/color';
+
 .layouts {
-  width: 80%;
-  margin: 60px;
+  width: 90%;
+  position: absolute;
+  top: 10%;
+  left: 5%;
   .left-menu {
+    overflow: scroll;
+    box-shadow: -8px -8px 15px rgba(0,0,0,0.2);
+    background: $background-menu;
     position: absolute;
-    border: 1px solid;
-    width: 250px;
+    width: 300px;
     height: 600px;
   }
   .right-content{
-    border: 1px solid;
     height: 600px;
-    margin-left: 260px;
+    margin-left: 310px;
   }
 
 }

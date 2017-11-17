@@ -1,20 +1,32 @@
 <template>
   <div class="todo">
-    <p v-if="!itemID">欢迎使用</p>
+    <div class="welcome-word" v-if="!itemID">
+      <p>👉 欢迎使用 👈</p>
+      <p>🎉 简洁好看 🎉</p>
+      <p>👏 方便好用 👏</p>
+      <p>😄 点击左侧 😄</p>
+    </div>
     <div v-if="itemID">
       <nav class="page-title">
-        <div class="page-title-left">
+        <div class="page-title-left todo-title">
           <span>{{ todo.title }}</span>
-          <span>{{ checkCount.length }}</span>
+          <div class="todo-count">
+            <span>{{ checkCount.length }}</span>
+          </div>
         </div>
         <div class="page-title-right">
           <a @click="isLocked">
-            <span>{{ todo.locked ? '解锁' : '锁定' }}</span>
+            <span>
+              <i v-if="todo.locked" class="fa fa-lock" aria-hidden="true"></i>
+              <i v-else class="fa fa-unlock" aria-hidden="true"></i>
+            </span>
           </a>
         </div>
         <div class="page-title-bottom">
-          <input type="text" v-model="text" :disabled="todo.locked">
-          <button type="button" name="button" @click="addItem">+</button>
+          <input type="text" v-model="text" :disabled="todo.locked" placeholder="解锁后才能添加">
+          <a @click="addItem">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a>
         </div>
       </nav>
       <section  class="page-content">
@@ -145,12 +157,97 @@ export default {
 </script>
 
 <style lang="scss">
+  .welcome-word {
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+    letter-spacing: 10px;
+    color: #747e8f;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+    height: 600px;
+    position: relative;
+    bottom: 50px;
+    p {
+      padding-top: 30px;
+    }
+  }
   .page-title {
-    border: 1px solid;
+    height: 140px;
+    background: #54cec3;
+    box-shadow: 8px 8px 0px #b3e9e4;
+    .page-title-left {
+      font-size: 2rem;
+      color: white;
+      font-weight: 400;
+      letter-spacing: 5px;
+    }
+    .todo-title {
+      position: relative;
+      left: 5%;
+      top: 10px;
+      .todo-count {
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid white;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+        background: white;
+        color: #54cec3;
+        font-size: 1.6rem;
+        position: absolute;
+        top: 5px;
+        left: 140px;
+        span {
+          line-height: 30px;
+        }
+      }
+    }
+    .page-title-right {
+      position: relative;
+      left: 85%;
+      color: white;
+      font-size: 2.5rem;
+      a {
+        cursor: pointer;
+      }
+    }
+    .page-title-bottom {
+      color: white;
+      height: 50px;
+      margin-top: -20px;
+      background-color: #a0e4dd;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      width: 50%;
+      a {
+        cursor: pointer;
+      }
+      input {
+        height: 50px;
+        background-color: #a0e4dd;
+        width: 90%;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 1px;
+        color: white;
+      }
+      input::-webkit-input-placeholder {
+        color: white;
+      }
+      input:-moz-placeholder {
+        color: white;
+      }
+    }
   }
   .page-content {
-    border: 1px solid;
-    margin-top: 5px;
-    height: 525px;
+    border: 1px solid #f4ede1;
+    margin-top: 30px;
+    height: 430px;
+    background: #f4ede1;
+    box-shadow: 5px 5px 10px #eee8e2;
+    overflow: scroll;
   }
 </style>

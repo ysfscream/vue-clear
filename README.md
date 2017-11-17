@@ -2,6 +2,19 @@
 
 > 📋 vue-demo and the to do list app
 
+# These are screenshots of the project
+
+> The demo was in Chinese
+
+![screenshots](./static/images/1.jpg)
+
+![screenshots](./static/images/2.png)
+
+![screenshots](./static/images/3.png)
+
+![screenshots](./static/images/4.png)
+
+
 ## Build Setup
 
 ``` bash

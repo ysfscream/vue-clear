@@ -1,19 +1,31 @@
 <template>
   <div class="menus">
     <ul>
-      <li v-for="(item, index) in items" :key="index">
-        <a @click="gotoList(item.id)" :class="{ 'active': item.id === todoId }">
-          <span v-if="item.locked">🔐</span>
-          <span>{{ item.title }}</span>
+      <li v-for="(item, index) in items" :key="index" :class="{ 'active': item.id === todoId }">
+        <a @click="gotoList(item.id)">
+          <span class="locked" v-if="item.locked">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+          <span class="title">{{ item.title }}</span>
         </a>
-        <span>{{ item.count }}</span>
-        <a @click="removeItem(item.id)">
-          <span>删除</span>
+        <div class="count">
+          <span>{{ item.count }}</span>
+        </div>
+        <a class="remove" @click="removeItem(item.id)">
+          <span>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </span>
         </a>
       </li>
     </ul>
-    <input type="text" v-model="itemsTitle" :disabled="disabled" @keyup.enter="addMenu">
-    <button type="button" name="button" @click="addMenuInput">填写</button>
+    <div class="add">
+      <div class="input-text">
+        <input type="text" v-model="itemsTitle" placeholder="添加你的日程" @keyup.enter="addMenu">
+      </div>
+      <a @click="addMenu" class="add-button">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -24,7 +36,6 @@ export default {
   name: 'menus',
   data() {
     return {
-      disabled: true,
       itemsTitle: '',
       items: [],
       todoId: '',
@@ -43,10 +54,10 @@ export default {
         }
       });
     },
-    addMenuInput() {
-      this.disabled = false;
-    },
     addMenu() {
+      if (!this.itemsTitle) {
+        return;
+      }
       this.$http.post('/items', {
         title: this.itemsTitle,
         locked: false,
@@ -84,8 +95,88 @@ export default {
 };
 </script>
 
-<style lang="css">
-.active {
-  border: 1px solid;
+<style lang="scss">
+
+.menus {
+  > ul {
+    .active {
+      background: #ef8189;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+    > li {
+      &:hover {
+        background: #ef8189;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      }
+      > a {
+        cursor: pointer;
+      }
+      list-style: none;
+      color: white;
+      font-size: 1.1rem;
+      padding: 15px 10px 25px 10px;
+      .locked {
+        position: absolute;
+        left: 20px;
+      }
+      .count {
+        color: #ef8189;
+        font-size: 0.8rem;
+        line-height: 20px;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px #e84b56;
+        text-align: center;
+        background: white;
+        margin: 0px 0 0 20px;
+      }
+      .title {
+        position: absolute;
+        left: 110px;
+        width: 130px;
+      }
+      .remove {
+        position: absolute;
+        right: 20px;
+        margin-top: -18px;
+      }
+    }
+  }
+  .add {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    .input-text {
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      width: 240px;
+      input {
+        background-color: #ef8189;
+        height: 60px;
+        width: 240px;
+        border: none;
+        outline: none;
+        padding: 8px 0;
+        font-size: 1rem;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 1px;
+        color: white;
+      }
+      input::-webkit-input-placeholder {
+        color: white;
+      }
+      input:-moz-placeholder {
+        color: white;
+      }
+    }
+    .add-button {
+      position: relative;
+      left: 125px;
+      bottom: 40px;
+    }
+  }
 }
 </style>

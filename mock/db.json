@@ -1,42 +1,102 @@
 {
   "items": [
     {
-      "id": 1,
-      "title": "周一",
+      "id": 7,
+      "title": "星期日",
       "locked": false,
-      "count": 0
+      "count": 1
     },
     {
-      "id": 2,
-      "title": "周二",
+      "id": 1,
+      "title": "星期一",
       "locked": true,
       "count": 0
     },
     {
+      "id": 2,
+      "title": "星期二",
+      "locked": true,
+      "count": 1
+    },
+    {
       "id": 3,
-      "title": "周三",
+      "title": "星期三",
       "locked": true,
       "count": 0
     },
     {
       "id": 4,
-      "title": "周四",
+      "title": "星期四",
       "locked": true,
       "count": 0
     },
     {
       "id": 5,
-      "title": "周五",
+      "title": "星期五",
       "locked": true,
       "count": 0
+    },
+    {
+      "title": "星期六",
+      "locked": true,
+      "count": 1,
+      "id": 6
     }
   ],
   "todoItems": [
     {
-      "id": 1,
+      "checked": false,
+      "text": "123123123",
       "itemID": 1,
-      "text": "新的一天 233333",
-      "checked": false
+      "id": 2
+    },
+    {
+      "checked": false,
+      "text": "fsafsf",
+      "itemID": 1,
+      "id": 3
+    },
+    {
+      "checked": false,
+      "text": "asdasd",
+      "itemID": 1,
+      "id": 4
+    },
+    {
+      "checked": true,
+      "text": "看正义联盟",
+      "itemID": 6,
+      "id": 5
+    },
+    {
+      "checked": false,
+      "text": "去吃烤年糕",
+      "itemID": "6",
+      "id": 6
+    },
+    {
+      "checked": true,
+      "text": "vue-clear 收工",
+      "itemID": 7,
+      "id": 7
+    },
+    {
+      "checked": true,
+      "text": "点眼药水",
+      "itemID": 2,
+      "id": 8
+    },
+    {
+      "checked": false,
+      "text": "睡前喝牛奶",
+      "itemID": 2,
+      "id": 9
+    },
+    {
+      "checked": false,
+      "text": "看 JavaScript 权威指南",
+      "itemID": 2,
+      "id": 10
     }
   ]
 }
