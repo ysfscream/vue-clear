@@ -4,7 +4,7 @@
       "id": 7,
       "title": "星期日",
       "locked": false,
-      "count": 1
+      "count": 2
     },
     {
       "id": 1,
@@ -97,6 +97,12 @@
       "text": "看 JavaScript 权威指南",
       "itemID": 2,
       "id": 10
+    },
+    {
+      "checked": true,
+      "text": "asdasdasd",
+      "itemID": 7,
+      "id": 11
     }
   ]
 }
